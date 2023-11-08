@@ -1,0 +1,93 @@
+% !TEX root = ../main.tex
+% 常用符号与自定义命令
+\def\ZZ{{\mathbb Z}}
+\def\NN{{\mathbb N}}
+\def\RR{{\mathbb R}}
+\def\CC{{\mathbb C}}
+\def\QQ{{\mathbb Q}}
+\def\EE{{\mathbb E}}
+\def\FF{{\mathbb F}}
+%\def\PP{{\mathcal P}}
+\def\PP{P}
+\def\Fp{\mathbb{F}_{p}}
+\def\Fq{\mathbb{F}_{q}}
+\def\Zp{\mathbb{Z}_{p}}
+\def\Zq{\mathbb{Z}_{q}}
+\def\Zk{\mathbb{Z}_{2^k}}
+\def\Zl{\mathbb{Z}_{2^\ell}}
+
+\def\Adv{\mathcal{A}}
+\def\Sim{\mathcal{S}}
+\def\Real{\textsc{Real}}
+\def\Ideal{\textsc{Ideal}}
+\def\View{\mathsf{View}}
+\def\cequiv{\overset{\mathrm{c}}{\approx}}
+
+\newcommand{\Simulator}[2]{\Sim_\mathsf{#1}^{#2}}
+
+\newcommand{\INPUT}{{\bf 输入}}
+\newcommand{\OUTPUT}{{\bf 输出}}
+\newcommand{\PARAMETERS}{{\bf 参数}}
+\newcommand{\PREPROCESSING}{{\bf 预处理阶段}}
+\newcommand{\ONLINE}{{\bf 在线阶段}}
+
+\newcommand{\Func}[1]{\mathcal F_\mathsf{#1}}
+\newcommand{\Prot}[1]{\Pi_\mathsf{#1}}
+
+\newcommand{\PRG}[1]{\mathsf{PRG}(#1)}
+\newcommand{\PRF}[1]{\mathsf{PRF}(#1)}
+\newcommand{\LSB}[1]{\mathsf{LSB}(#1)}
+\newcommand{\MSB}[1]{\mathsf{MSB}(#1)}
+
+%% secret sharing
+\newcommand{\ASS}[1]{\langle {#1} \rangle}
+\newcommand{\RSS}[1]{\llbracket{#1}\rrbracket}
+\newcommand{\MSS}[1]{\langle\!\langle {#1} \rangle\!\rangle}
+
+\newcommand{\ASSA}[1]{\ASS{#1}^\mathsf A}
+\newcommand{\RSSA}[1]{\RSS{#1}^\mathsf A}
+\newcommand{\MSSA}[1]{\MSS{#1}^\mathsf A}
+
+\newcommand{\ASSB}[1]{\ASS{#1}^\mathsf B}
+\newcommand{\RSSB}[1]{\RSS{#1}^\mathsf B}
+\newcommand{\MSSB}[1]{\MSS{#1}^\mathsf B}
+
+%\usepackage{pifont}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+
+%% for algorithm
+\floatname{algorithm}{算法}
+\renewcommand{\algorithmicrequire}{\textbf{输入:}}
+\renewcommand{\algorithmicensure}{\textbf{输出:}}
+
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 上标引用
+
+% Protocol/Functionality
+\tcbuselibrary{skins,breakable}
+\newtcolorbox[auto counter,number within=chapter]{protocol}[2][]{%
+  enhanced,
+%  title        = {Protocol \thetcbcounter: {#2}},
+  title        = {Protocol {#2}},
+  attach boxed title to top left={xshift=+3mm,yshift*=-3mm},
+  colback      = black!5,
+  colframe     = black!35,
+  fonttitle    = \bfseries,
+  colbacktitle = black!15!white,
+  arc          = 0mm,
+  coltitle     = black,
+  #1
+}
+
+\newtcolorbox[auto counter,number within=chapter]{functionality}[2][]{%
+  enhanced,
+%  title        = {Functionality \thetcbcounter: {#2}},
+  title        = {Functionality {#2}},
+  attach boxed title to top left={xshift=+3mm,yshift*=-3mm},
+  colback      = yellow!5,
+  colframe     = yellow!35!black,
+  fonttitle    = \bfseries,
+  colbacktitle = yellow!15!white,
+  coltitle     = black,
+  #1
+}

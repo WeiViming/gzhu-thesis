@@ -1,0 +1,122 @@
+%% TeX mode: XeLaTeX + bibTeX + XeLaTeX + XeLaTeX
+
+%% Thesis Template of Guangzhou University
+%% for using GZHUthesis package with LaTeX2e Created by Viming Wei
+%% <weiviming@gmail.com> 2019-5.
+
+\PassOptionsToPackage{quiet}{fontspec} % 消除字体警告
+\expandafter\def\csname CTEX@spaceChar\endcsname{\hspace{1em}}
+\documentclass[openany, notypeinfo]{style/GZHUthesis}
+
+% 可选参数：
+% openany    新一章从奇数页或偶数页开始都可以
+% notypeinfo 取消扉页的LaTeX版本信息
+%
+% 下面三个选一个：
+% 使用 dvipdfm  生成最终的 PDF 文档 (缺省设置）
+% 使用 dvips    生成最终的 PS 文档
+% 使用 pdfLaTeX 生成最终的 PDF 文档
+
+%盲审模式,正常模式请注释掉
+%\blindtrue
+\blindfalse
+
+%默认博士论文, 如需要硕士论文, 注释掉第一行, 同时对第二行取消注释
+\phdtrue
+%\phdfalse
+
+%字体设置
+\setsansfont{Arial}
+
+%\citeyearn{XXXX} 自动在\citeyear后面加上“年”
+\hypersetup{hidelinks} %取消链接的颜色
+
+%% 为了方便输入特殊符号, 添加如下新命令:
+\medmuskip=2mu        %水平间距调整: 二元运算符 "+, -, <"
+\thickmuskip=3mu      %水平间距调整: 关系符号调整 "="
+% \abovedisplayskip=0pt
+% \belowdisplayskip=0pt
+% \abovedisplayshortskip=0pt
+% \belowdisplayshortskip=0pt
+
+
+\graphicspath{{chapter/}{figures/}}  % 设置图形文件的搜索路径
+\ctexset{section={format+={\flushleft}}}  % 小节标题靠左对齐
+
+% 添加新文件时, 需要在此处加入文件名, 方便控制编译结果
+\ifblind
+\includeonly{  %% 选择盲审时要编译的章节
+  chapter/abstract,
+  chapter/chapter1,
+  chapter/chapter2,
+  chapter/conclusion,
+}
+\else
+\includeonly{  %% 选择要编译的章节, 注释掉的章节不会编译, 平时可注释掉某些章节来提升整体编译速度
+  chapter/abstract,
+  chapter/chapter1,
+  chapter/chapter2,
+  chapter/conclusion,
+  chapter/pub,
+  chapter/thanks
+}
+\fi
+
+% 自定义命令
+\include{chapter/defcommands}
+\include{chapter/cover.cfg}  % 论文基本信息设置
+
+\begin{document}
+\begin{sloppypar} % 处理行溢出
+\let\standardtilde=\relax 
+% 此命令可将其后所有"~"改为不可换行的空格符, 因为ctex宏包重新定义"~"是可换行的空格符
+\standardtilde
+\CJKspace     
+% ctex宏包默认CJK*环境模式(即忽略汉字和中文标点之后的空格), 当文中数学符号比较多时很不方便.
+% 解决办法: 
+%         1. 正文使用 \CJKspace 切换至CJK环境模式(不忽略空格)
+%         2. 或在导引中使用 \usepackage[space]{ctex}(不忽略空格). 
+%         3. \begin{CJK} \end{CJK}
+% 若用英文符号, 只要不在两个汉字之间"回车"换行即可.
+              
+\makechinesetitle  % 中文封面
+% \makeenglishtitle  % 英文封面, 广大默认不使用英文封面
+\makedefendpage    % 中文答辩页
+\makeenglishpage   % 英文答辩页
+
+\frontmatter  % 前言部分
+ \pagenumbering{Roman} % 页码大写罗马字体
+  \include{chapter/abstract}  % 摘要
+  \begin{spacing}{1.0}
+  \tableofcontents             % 目录
+%  \tableofengcontents		   % 英文目录, 只有使用双语章节时才使用, 例如\bichapter{中文章名}{English Chapter}, 此外还有\bisection, \bisubsection, \bicaption
+%  \listoftables               % 表格目录
+%  \listoffigures              % 插图目录
+  \end{spacing}
+\mainmatter   %% 正文部分
+
+%\linenumbers  %% 开始添加行号, 盲审时使用
+
+% 添加新章节时必须在此处声明
+\include{chapter/chapter1}
+\include{chapter/chapter2}
+\include{chapter/conclusion}
+
+\appendix  % 附录
+
+\backmatter  %% 附件部分
+\bibliographystyle{style/gbt7714-2005-numerical}
+
+% 参考文献使用 BibTeX
+\bibliography{reference/myref}
+
+% \nocite{*} %如果需要列出所有参考文献, 即使这些参考文献没有被正文引用到
+
+\ifblind
+\else
+  \include{chapter/pub}     % 发表文章目录
+  \include{chapter/thanks}  % 致谢
+\fi
+
+\end{sloppypar} % 处理行溢出
+\end{document}

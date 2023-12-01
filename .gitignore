@@ -1,8 +1,31 @@
+.DS_Store
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# LaTeX Temp
+.texpadtmp/
 *.aux
+*.synctex(busy)
+*.synctex.gz
+*.synctex
+*.log
+*.nav
+*.snm
+*.bak
+*.vrb
+*.toc
+*.pdf
 *.bbl
 *.blg
-*.log
 *.out
-*.gz
-*.toc
-*.aux
+
+# include picture.pdf
+!figure/*.pdf
+!main.pdf

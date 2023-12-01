@@ -43,14 +43,57 @@
 
 为了生成双语目录, 需要在main.tex中取消\verb|\tableofengcontents|的注释.
 
+\section{算法伪代码}
+本模板已引入算法相关宏包. 使用方法见下例 \ref{alg:test}.
+\begin{verbatim}
+    \begin{algorithm}%[htbp]
+        \caption{这是标题}
+        \label{alg:test}
+        \begin{algorithmic}[1] %每行显示行号
+            \Require 这是输入;
+            \Ensure 这是输出.
+            \For{$j\leftarrow 0,\cdots, d$}
+                \State {Test!} \Comment {这里是注释}
+            \EndFor
+            \If {$w>1$}
+                \State {This is a test!}
+            \EndIf
+            \While {$a>1$}
+                \State {Test!}
+            \EndWhile
+            \State {$\textbf{return }$ 0}
+        \end{algorithmic}
+    \end{algorithm}
+\end{verbatim}
+
+效果如下:
+\begin{algorithm}%[htbp]
+    \caption{这是标题}
+    \label{alg:test}
+    \begin{algorithmic}[1] %每行显示行号
+        \Require 这是输入;
+        \Ensure 这是输出.
+        \For{$j\leftarrow 0,\cdots, d$}
+            \State {Test!} \Comment {这里是注释}
+        \EndFor
+        \If {$w>1$}
+        	\State {This is a test!}
+        \EndIf
+        \While {$a>1$}
+        	\State {Test!}
+        \EndWhile
+        \State {$\textbf{return }$ 0}
+    \end{algorithmic}
+\end{algorithm}
+
 
 \section{插图与引用}
-如图 \ref{fig:ASS}.
+如图 \ref{fig:logo}.
 \begin{figure}[h]
 	\centering
-	\includegraphics[scale=0.5]{ASS}
-	\bicaption{加性秘密共享}{Additive Secret Sharing}
-	\label{fig:ASS}
+	\includegraphics[scale=0.25]{logo}
+	\bicaption{广州大学Logo}{GZHU LOGO}
+	\label{fig:logo}
 \end{figure}
 
 如果要生成图表的标题目录, 需要在main.tex文件中取消以下两行的注释:

@@ -21,7 +21,7 @@
 %\blindtrue
 \blindfalse
 
-%默认博士论文, 如需要硕士论文, 注释掉第一行, 同时对第二行取消注释
+%默认博士论文, 如需要硕士论文, 注释掉下行
 \phdtrue
 %\phdfalse
 
@@ -57,14 +57,17 @@
   chapter/chapter1,
   chapter/chapter2,
   chapter/conclusion,
-  chapter/pub,
+  chapter/publications,
+  chapter/projects,
   chapter/thanks
 }
 \fi
 
 % 自定义命令
 \include{chapter/defcommands}
-\include{chapter/cover.cfg}  % 论文基本信息设置
+
+% 论文基本信息设置(包含作者, 论文标题等)
+\include{chapter/cover.cfg}  
 
 \begin{document}
 \begin{sloppypar} % 处理行溢出
@@ -114,7 +117,8 @@
 
 \ifblind
 \else
-  \include{chapter/pub}     % 发表文章目录
+  \include{chapter/publications}     % 发表文章目录
+  \include{chapter/projects} % 参与项目目录
   \include{chapter/thanks}  % 致谢
 \fi
 

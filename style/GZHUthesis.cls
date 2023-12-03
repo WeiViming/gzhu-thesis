@@ -165,8 +165,6 @@
 \RequirePackage{datetime}
 \renewcommand{\today}{{\number\year}年{\number\month}月{\number\day}日, \currenttime}
 
-\newif\ifphd\phdtrue
-
 % list
 \RequirePackage{enumitem}
 \setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt}
@@ -215,13 +213,12 @@
   urlcolor=black,
   plainpages=false,%
   pdfstartview=FitH}
+  
+\newif\ifphd\phdtrue % 区分硕士论文与博士论文, 默认博士
 
 \AtEndOfPackage{
 \makeatletter
-%\input{GZHUthesis.cfg}
-%%
-%% Begin of file `GZHUthesis.cfg'.
-\newif\ifblind\blindfalse
+\newif\ifblind\blindfalse % 区分正常模式与盲审模式
 
 %%
 %% the setup of ctex package
@@ -240,7 +237,7 @@
 \def\GZHU@label@serialnumber{学号}
 \def\GZHU@label@secrecydate{保密日期}
 \def\GZHU@label@secrecyperiod{保密期限}
-\ifblind
+\ifphd
 \def\GZHU@label@thesis{博士学位论文}
 \else
 \def\GZHU@label@thesis{硕士学位论文}
@@ -344,6 +341,14 @@
 \def\GZHU@label@publications{攻读硕士学位期间发表的文章目录}
 \fi
 %%
+%% labels in the projects
+%%
+\ifphd
+\def\GZHU@label@projects{攻读博士学位期间参与的项目目录}
+\else
+\def\GZHU@label@projects{攻读硕士学位期间参与的项目目录}
+\fi
+%%
 %% labels in the resume
 %%
 \def\GZHU@label@resume{简\texorpdfstring{\GZHUspace}{\space}历}
@@ -421,10 +426,6 @@
 \let\oldciteyear\citeyear
 \newcommand{\citeyearn}[1]{\oldciteyear{#1}年}
 \newcommand{\citeauthorn}[1]{\citeauthorn{#1}\cite{#1}}
-
-%\endinput
-%%
-%% End of file `GZHUthesis.cfg'.
 \makeatother
 }
 
@@ -883,6 +884,28 @@
       \sfcode`\.\@m}
      {\def\@noitemerr
        {\@latex@warning{Empty `publications' environment}}%
+      \endlist}
+      
+%% 作者参与项目
+\newenvironment{projects}[1]
+     {\Nchapter{\GZHU@label@projects}%
+      \@mkboth{\MakeUppercase\GZHU@label@projects}
+              {\MakeUppercase\GZHU@label@projects}%
+      \list{\@biblabel{\@arabic\c@enumiv}}%
+           {\settowidth\labelwidth{\@biblabel{#1}}%
+            \leftmargin\labelwidth
+            \advance\leftmargin\labelsep
+            \@openbib@code
+            \usecounter{enumiv}%
+            \let\p@enumiv\@empty
+            \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+      \sloppy
+      \clubpenalty4000
+      \@clubpenalty \clubpenalty
+      \widowpenalty4000%
+      \sfcode`\.\@m}
+     {\def\@noitemerr
+       {\@latex@warning{Empty `projects' environment}}%
       \endlist}
 
 %% 简历

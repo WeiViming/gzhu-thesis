@@ -68,6 +68,8 @@
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm,stmaryrd}
 %% graphics packages
 \RequirePackage{graphicx}
+%% 图片搜索路径
+\graphicspath{{chapter/}{figures/}} 
 %% sort and compress citations
 \RequirePackage[compress,numbers,square,comma]{natbib} %删除sort&将不进行引用顺序排列
 %% insert pdf pages
@@ -203,18 +205,19 @@
 \RequirePackage{hyperref}
 \hypersetup{
   pageanchor=false,
-  CJKbookmarks,%
+  CJKbookmarks,% 
 %  pagebackref,
   bookmarksnumbered,%
   bookmarksopenlevel=1,
-  colorlinks,%
+%  colorlinks,%
+  hidelinks, % 取消链接的颜色
   citecolor=cyan,%
   linkcolor=black,%
   urlcolor=black,
   plainpages=false,%
   pdfstartview=FitH}
   
-\newif\ifphd\phdtrue % 区分硕士论文与博士论文, 默认博士
+\newif\ifphd % 区分硕士论文与博士论文
 
 \AtEndOfPackage{
 \makeatletter
@@ -237,11 +240,7 @@
 \def\GZHU@label@serialnumber{学号}
 \def\GZHU@label@secrecydate{保密日期}
 \def\GZHU@label@secrecyperiod{保密期限}
-\ifphd
-\def\GZHU@label@thesis{博士学位论文}
-\else
-\def\GZHU@label@thesis{硕士学位论文}
-\fi
+\def\GZHU@label@thesis{\GZHU@value@degree 学位论文}
 \def\GZHU@label@advisor{指~导~老~师（签名）}
 \def\GZHU@label@degree{申请学位级别}
 \def\GZHU@label@major{学科专业（领域）}
@@ -282,6 +281,8 @@
 \def\GZHU@value@version{}
 \def\GZHU@value@secrecydate{}
 \def\GZHU@value@secrecyperiod{}
+\def\GZHU@value@degree{博士}
+
 
 %%
 %% labels in the english title page
@@ -297,15 +298,9 @@
 \def\GZHU@label@englishaffiliation{Affiliation}
 \def\GZHU@label@englishdefencedate{Date of Defence}
 \def\GZHU@label@englishdegreeconferring{Degree-Conferring-Institution}
-\ifphd
 \def\GZHU@label@englishstatement{Submitted in total fulfilment
-  of the requirements for the degree of Ph.D. \\
+  of the requirements for the degree of \GZHU@value@englishdegree \\
   in \GZHU@value@englishmajor}
-\else
-\def\GZHU@label@englishstatement{Submitted in total fulfilment
-  of the requirements for the degree of Master \\
-  in \GZHU@value@englishmajor}
-\fi
 %%
 %% string values filled in the english title page
 %%
@@ -315,15 +310,13 @@
 \def\GZHU@value@englishinstitute{(Institute Name)}
 \def\GZHU@value@englishdefencedate{}
 \def\GZHU@value@englishschool{(School Name)}
-\ifphd
-\def\GZHU@value@englishdegree{Ph.D.}
-\else
-\def\GZHU@value@englishdegree{Master}
-\fi
 \def\GZHU@value@englishsubject{Science}
 \def\GZHU@value@englishmajor{}
 \def\GZHU@value@englishsecrecydate{}
 \def\GZHU@value@englishsecrecyperiod{}
+\def\GZHU@value@englishdegree{Ph.D.}
+\def\GZHU@value@englishdegreea{Doctoral}
+\def\GZHU@value@englishdegreeb{Doctor}
 
 %%
 %% labels in the abstracts
@@ -335,19 +328,11 @@
 %%
 %% labels in the publications
 %%
-\ifphd
-\def\GZHU@label@publications{攻读博士学位期间发表的文章目录}
-\else
-\def\GZHU@label@publications{攻读硕士学位期间发表的文章目录}
-\fi
+\def\GZHU@label@publications{攻读\GZHU@value@degree 学位期间发表的文章目录}
 %%
 %% labels in the projects
 %%
-\ifphd
-\def\GZHU@label@projects{攻读博士学位期间参与的项目目录}
-\else
-\def\GZHU@label@projects{攻读硕士学位期间参与的项目目录}
-\fi
+\def\GZHU@label@projects{攻读\GZHU@value@degree 学位期间参与的项目目录}
 %%
 %% labels in the resume
 %%
@@ -494,6 +479,8 @@
 \newcommand\englishinstitute[1]{\def\GZHU@value@englishinstitute{#1}}
 \newcommand\englishdefencedate[1]{\def\GZHU@value@englishdefencedate{#1}}
 \newcommand\englishdegree[1]{\def\GZHU@value@englishdegree{#1}}
+\newcommand\englishdegreea[1]{\def\GZHU@value@englishdegreea{#1}}
+\newcommand\englishdegreeb[1]{\def\GZHU@value@englishdegreeb{#1}}
 \newcommand\englishmajor[1]{\def\GZHU@value@englishmajor{#1}}
 \newcommand\englishsecrecydate[1]{\def\GZHU@value@englishsecrecydate{#1}}
 \newcommand\englishsecrecyperiod[1]{\def\GZHU@value@englishsecrecyperiod{#1}}
@@ -545,11 +532,7 @@
 \begin{center}
 \linespread{1.2}
 \vspace{18mm}
-\ifphd
-\centerline{\zihao{-1} \heiti {\GZHU@value@school}博士学位论文}
-\else
-\centerline{\zihao{-1} \heiti {\GZHU@value@school}硕士学位论文}
-\fi
+\centerline{\zihao{-1} \heiti {\GZHU@value@school}{\GZHU@value@degree}学位论文}
 \vspace{10mm}
 \begin{center}
 \zihao{2} \heiti \GZHU@value@title\\
@@ -605,11 +588,7 @@
 \end{spacing}
 \end{center}
 \begin{center}
-\ifphd
-\zihao{-2}{\heiti {\GZHU@value@school}博士学位论文}\\
-\else
-\zihao{-2}{\heiti {\GZHU@value@school}硕士学位论文}\\
-\fi
+\zihao{-2}{\heiti {\GZHU@value@school}{\GZHU@value@degree}学位论文}\\
 \end{center}
 \vspace{2mm}
 \begin{center}
@@ -617,7 +596,7 @@
 \end{center}
 \vspace{6mm}
 \centerline{\kaishu\zihao{4}\GZHU@value@author}
-\vspace{8mm}
+\vfill
 \begin{spacing}{1.8}
 \zihao{4}
 \begin{flushleft}
@@ -655,29 +634,25 @@
 \GZHU@label@englishsecrecyperiod: \uline{\hfill \GZHU@value@englishsecrecyperiod\hfill\mbox{}}
 \end{multicols}
 \end{spacing}
-\ifphd
-\centerline{\zihao{-2}\bf Doctoral Dissertation of \GZHU@value@englishschool}
-\else
-\centerline{\zihao{-2}\bf Masteral Dissertation of \GZHU@value@englishschool}
-\fi
+\centerline{\zihao{-2}\bf {\GZHU@value@englishdegreea} Dissertation of {\GZHU@value@englishschool}}
 \vspace{5mm}
 \begin{center}
-  \zihao{1}\bf \GZHU@value@englishtitle
+  {\zihao{1}\bf \GZHU@value@englishtitle}
 \end{center}
 \vspace{10mm}
 \centerline{\zihao{-2}\GZHU@value@englishauthor}
- \vspace{25mm}
+\vfill
 
 \begin{center}
 \large
 \renewcommand{\arraystretch}{1.0}
 \begin{tabular}{p{8.5cm}p{6.0cm}}
-{\bf \GZHU@label@englishadvisor:}            & \GZHU@value@englishadvisor       \\
-{\bf \GZHU@label@englishdegree:}             & \GZHU@value@englishdegree        \\
-{\bf \GZHU@label@englishspecialty:}          & \GZHU@value@englishmajor         \\
-{\bf \GZHU@label@englishaffiliation:}        & \GZHU@value@englishinstitute     \\
-{\bf \GZHU@label@englishdefencedate:}        & \GZHU@value@englishdefencedate   \\
-{\bf \GZHU@label@englishdegreeconferring:}   & \GZHU@value@englishschool   
+{\bf \GZHU@label@englishadvisor:}            & {\GZHU@value@englishadvisor}       \\
+{\bf \GZHU@label@englishdegree:}             & {{\GZHU@value@englishdegreeb} of {\GZHU@value@englishsubject}}        \\
+{\bf \GZHU@label@englishspecialty:}          & {\GZHU@value@englishmajor}         \\
+{\bf \GZHU@label@englishaffiliation:}        & {\GZHU@value@englishinstitute}     \\
+{\bf \GZHU@label@englishdefencedate:}        & {\GZHU@value@englishdefencedate}   \\
+{\bf \GZHU@label@englishdegreeconferring:}   & {\GZHU@value@englishschool}   
 \end{tabular}%
 \end{center}
 
@@ -707,11 +682,7 @@
 %}
 \pagestyle{fancy}
   \fancyhf{}
-\ifphd
-  \fancyhead[EC]{\small {\GZHU@value@school\GZHU@value@subject}博士学位论文}
-\else
-  \fancyhead[EC]{\small {\GZHU@value@school\GZHU@value@subject}硕士学位论文}
-\fi
+  \fancyhead[EC]{\small {\GZHU@value@school\GZHU@value@subject\GZHU@value@degree}学位论文}
   \fancyhead[OC]{\small \nouppercase\leftmark}
   \cfoot{\thepage}
 
@@ -940,5 +911,9 @@
   {\newline}% Space after thm head: \newline = linebreak
   {}%         Thm head spec
 \endinput
+
+
+%字体设置
+\setsansfont{Arial}
 %%
 %% End of file `GZHUthesis.cls'.

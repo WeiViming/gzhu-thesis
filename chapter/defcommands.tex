@@ -1,4 +1,32 @@
 % !TEX root = ../main.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 其他设置(勿动) %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\ifphd
+  \degree{博士}
+  \englishdegree{Ph.D}
+  \englishdegreea{Doctoral}
+  \englishdegreeb{Doctor}
+\else
+  \degree{硕士}
+  \englishdegree{Master}
+  \englishdegreea{Masteral}
+  \englishdegreeb{Master}
+\fi
+
+%% 为了方便输入特殊符号, 添加如下新命令:
+\medmuskip=2mu        %水平间距调整: 二元运算符 "+, -, <"
+\thickmuskip=3mu      %水平间距调整: 关系符号调整 "="
+% \abovedisplayskip=0pt
+% \belowdisplayskip=0pt
+% \abovedisplayshortskip=0pt
+% \belowdisplayshortskip=0pt
+
+\ctexset{section={format+={\flushleft}}}  % 小节标题靠左对齐
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 % 常用符号与自定义命令
 \def\ZZ{{\mathbb Z}}
 \def\NN{{\mathbb N}}

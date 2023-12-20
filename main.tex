@@ -21,27 +21,9 @@
 %\blindtrue
 \blindfalse
 
-%默认博士论文, 如需要硕士论文, 注释掉下行
+%默认博士论文, 如需要硕士论文, 请注释掉第一个, 打开第二个
 \phdtrue
 %\phdfalse
-
-%字体设置
-\setsansfont{Arial}
-
-%\citeyearn{XXXX} 自动在\citeyear后面加上“年”
-\hypersetup{hidelinks} %取消链接的颜色
-
-%% 为了方便输入特殊符号, 添加如下新命令:
-\medmuskip=2mu        %水平间距调整: 二元运算符 "+, -, <"
-\thickmuskip=3mu      %水平间距调整: 关系符号调整 "="
-% \abovedisplayskip=0pt
-% \belowdisplayskip=0pt
-% \abovedisplayshortskip=0pt
-% \belowdisplayshortskip=0pt
-
-
-\graphicspath{{chapter/}{figures/}}  % 设置图形文件的搜索路径
-\ctexset{section={format+={\flushleft}}}  % 小节标题靠左对齐
 
 % 添加新文件时, 需要在此处加入文件名, 方便控制编译结果
 \ifblind
@@ -83,7 +65,7 @@
 % 若用英文符号, 只要不在两个汉字之间"回车"换行即可.
               
 \makechinesetitle  % 中文封面
-% \makeenglishtitle  % 英文封面, 广大默认不使用英文封面
+\makeenglishtitle  % 英文封面, 广大默认不使用英文封面
 \makedefendpage    % 中文答辩页
 \makeenglishpage   % 英文答辩页
 

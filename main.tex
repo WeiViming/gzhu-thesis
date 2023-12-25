@@ -2,7 +2,7 @@
 
 %% Thesis Template of Guangzhou University
 %% for using GZHUthesis package with LaTeX2e Created by Viming Wei
-%% <weiviming@gmail.com> 2019-5.
+%% <wei_weiming@163.com> 2023-5.
 
 \PassOptionsToPackage{quiet}{fontspec} % 消除字体警告
 \expandafter\def\csname CTEX@spaceChar\endcsname{\hspace{1em}}
@@ -65,7 +65,7 @@
 % 若用英文符号, 只要不在两个汉字之间"回车"换行即可.
               
 \makechinesetitle  % 中文封面
-\makeenglishtitle  % 英文封面, 广大默认不使用英文封面
+%\makeenglishtitle  % 英文封面, 广大默认不使用英文封面
 \makedefendpage    % 中文答辩页
 \makeenglishpage   % 英文答辩页
 
@@ -80,7 +80,9 @@
   \end{spacing}
 \mainmatter   %% 正文部分
 
-%\linenumbers  %% 开始添加行号, 盲审时使用
+\ifblind
+\linenumbers  %% 开始添加行号, 盲审时使用
+\fi
 
 % 添加新章节时必须在此处声明
 \include{chapter/chapter1}

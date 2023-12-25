@@ -140,7 +140,6 @@ Q5: 如何生成盲审论文?\\
 A5: 首先确保main.tex文件中的第48行这个\verb|\includeonly|命令中正确包含了需要盲审的章节, 然后按如下步骤操作:
 \begin{enumerate}
 \item 在main.tex文件中注释掉\verb|\blindfalse|, 打开\verb|\blindtrue|
-\item 取消\verb|\linenumbers|的注释, 正文部分每隔5行自动生成一个行号
 \item 使用xelatex编译3次生成盲审结果
 \end{enumerate}
 

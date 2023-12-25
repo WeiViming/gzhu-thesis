@@ -100,8 +100,7 @@
 %% 协议加框
 \RequirePackage{framed}
 
-%% 国标参考文献设置
-%\RequirePackage{style/gbt7714}
+%% 链接
 \RequirePackage{url}
 
 %% 处理行溢出问题
@@ -115,8 +114,11 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 
-%% 字体
+%% 打勾打叉 
 \RequirePackage{pifont}
+
+%% 字体设置
+\setsansfont{Arial}
 
 %% 插入代码
 %% 用法: {
@@ -553,10 +555,9 @@
 % 需要Logo
 %\vspace{3.0cm}
 %\includegraphics[scale=0.2]{logo.png}
-%\vspace{1.5cm}
 
-% 不需要Logo
-\vspace{7cm}
+
+\vfill
 
 \centerline{\zihao{-2}\kaishu \GZHU@value@school}
 \vspace{0.5cm}
@@ -911,9 +912,5 @@
   {\newline}% Space after thm head: \newline = linebreak
   {}%         Thm head spec
 \endinput
-
-
-%字体设置
-\setsansfont{Arial}
 %%
 %% End of file `GZHUthesis.cls'.

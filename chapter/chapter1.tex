@@ -23,9 +23,9 @@
 \end{itemize}
 
 \section{编译方式}
-本模板支持Windows/Linux/MacOS全平台编译, 编译方式如下:
+本模板支持Windows/Linux/MacOS全平台编译, 亦支持Overleaf等在线编译平台, 编译方式如下:
 \begin{enumerate}
-\item 安装texlive最新发行版, 如texlive 2023;
+\item 若本地环境请先安装texlive最新发行版, 如texlive 2023; 若在线环境请选择xelatex编译引擎;
 \item 使用xelatex编译一次, 然后使用bibtex编译一次, 最后再次使用xelatex编译两次即可.
 \end{enumerate}
 
@@ -117,9 +117,8 @@ Q1: 如何添加更多章节文件?\\
 A1: 按如下步骤操作:
 \begin{enumerate}
 \item 在chapter文件夹下添加新的tex文件, 例如chapter3.tex
-\item 打开main.tex, 在第100行后添加\verb|\include{chapter/chapter3}|
-\item 在47-63行的位置, 仿照其他语句加入\verb|chapter/chapter3,|(注意后面有个英文的逗号)
-\item 打开chapter3.tex, 第1行输入内容
+\item 打开main.tex, 仿照第28行的说明在对应位置添加\verb|chapter/chapter3,| ~ (注意后面有个英文的逗号)
+\item 打开chapter3.tex, 第1行输入内容(并非一定要添加, 只是方便某些TeX编辑器识别)
 \begin{verbatim}
 % !TEX root = ../main.tex
 \end{verbatim}
@@ -137,7 +136,7 @@ Q4: 可否修改为硕士学位论文?\\
 A4: 本模板默认为博士学位论文. 若要修改为硕士论文, 请在main.tex文件中将语句\verb|\phdtrue|注释掉, 同时取消\verb|\phdfalse|的注释. \\
 
 Q5: 如何生成盲审论文?\\
-A5: 首先确保main.tex文件中的第48行这个\verb|\includeonly|命令中正确包含了需要盲审的章节, 然后按如下步骤操作:
+A5: 首先确保main.tex文件中的第28行后面这个\verb|\includeonly|命令中正确包含了需要盲审的章节, 然后按如下步骤操作:
 \begin{enumerate}
 \item 在main.tex文件中注释掉\verb|\blindfalse|, 打开\verb|\blindtrue|
 \item 使用xelatex编译3次生成盲审结果

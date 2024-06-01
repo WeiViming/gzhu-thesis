@@ -25,6 +25,7 @@
 *.bbl
 *.blg
 *.out
+*.toe
 
 # include picture.pdf
 !figure/*.pdf

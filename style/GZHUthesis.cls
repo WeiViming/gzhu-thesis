@@ -60,14 +60,15 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
 \LoadClass[zihao=-4,a4paper]{ctexbook}[2005/11/25]
-\RequirePackage{multicol}
-\RequirePackage{fancyhdr}
-%% check pdfTeX mode
+%% check TeX mode
 \RequirePackage{ifpdf,ifxetex}
+%% page
+\RequirePackage{fancyhdr}
 %% math packages
 \RequirePackage{amsmath,amsthm,amsfonts,amssymb,bm,stmaryrd}
 %% graphics packages
 \RequirePackage{graphicx}
+\RequirePackage{xcolor}
 %% 图片搜索路径
 \graphicspath{{chapter/}{figures/}} 
 %% sort and compress citations
@@ -75,7 +76,7 @@
 %% insert pdf pages
 \RequirePackage{pdfpages}
 %% for table
-\RequirePackage{booktabs, multirow}
+\RequirePackage{booktabs, multirow, multicol}
 %% add underline for frontpage, By Viming
 \RequirePackage[normalem]{ulem}
 \RequirePackage{longtable, tabu, makecell}
@@ -83,6 +84,7 @@
 %% sub figure
 \RequirePackage{subfigure}
 
+%% 协议边框
 \RequirePackage{xspace}
 \RequirePackage{adjustbox}
 \RequirePackage{tcolorbox}
@@ -103,12 +105,14 @@
 %% 链接
 \RequirePackage{url}
 
-%% 处理行溢出问题
-\RequirePackage[textwidth=14.5cm]{geometry}
-\RequirePackage{blindtext}
-\parindent=2pt
+%% 页面
+\RequirePackage{geometry}
+%% 页面大小
+\geometry{top=2.5cm,bottom=2.5cm}
 
+%% 间距
 \RequirePackage{setspace}
+\parindent=2pt % 段落缩进
 
 %% Tikz
 \RequirePackage{tikz}
@@ -118,6 +122,7 @@
 \RequirePackage{pifont}
 
 %% 字体设置
+\RequirePackage[nomath]{stix} % Times风格英文字体
 \setsansfont{Arial}
 
 %% 插入代码
@@ -230,8 +235,8 @@
 %%
 \def\CTEX@englishcontentsname{Contents}
 \def\CTEX@contentsname{目\texorpdfstring{\GZHUspace}{\space} 录}
-%%\def\CTEX@listfigurename{插\GZHUspace 图}
-%%\def\CTEX@listtablename{表\GZHUspace 格}
+\def\CTEX@listfigurename{插\GZHUspace 图}
+\def\CTEX@listtablename{表\GZHUspace 格}
 %%
 %% labels in the title page
 %%
@@ -324,7 +329,7 @@
 %% labels in the abstracts
 %%
 \def\GZHU@label@abstract{摘\texorpdfstring{\GZHUspace}{\space}要}
-\def\GZHU@label@englishabstract{Abstract}
+\def\GZHU@label@englishabstract{ABSTRACT}
 \def\GZHU@label@keywords{关键词：}
 \def\GZHU@label@englishkeywords{Keywords:~}
 %%
@@ -664,10 +669,7 @@
   \fi
 }
 
-%%页眉格式
-\RequirePackage{fancyhdr, xcolor}
-
-% 粗细页眉
+% 默认粗细页眉, 如只需要一根细线, 则注释掉如下几行代码
 \newcommand{\makeheadrule}{%
 \makebox[-3pt][l]{\rule[.7\baselineskip]{\headwidth}{0.4pt}}
 \rule[0.85\baselineskip]{\headwidth}{2.25pt}\vskip-.8\baselineskip}
@@ -676,22 +678,24 @@
     {\if@fancyplain\let\headrulewidth\plainheadrulewidth\fi
      \makeheadrule}}
 
-%\fancypagestyle{plain}{%
-%  \fancyhf{}%
-%  %\renewcommand{\headrulewidth}{0.4pt}%
-%  %\renewcommand{\footrulewidth}{0pt}%
-%}
+%% 页眉页脚内容设置
 \pagestyle{fancy}
   \fancyhf{}
   \fancyhead[EC]{\small {\GZHU@value@school\GZHU@value@subject\GZHU@value@degree}学位论文}
   \fancyhead[OC]{\small \nouppercase\leftmark}
   \cfoot{\thepage}
+  %\fancypagestyle{plain}{}   %% 如果首页需要页眉
 
+%% 公式图片表格编号
 \makeatletter
     \ctexset{chapter={number={\arabic{chapter}}}}
-    \renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@figure}
-    \renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter.\fi \@arabic\c@table}
-    \renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+    \renewcommand{\thefigure}{\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@figure}
+    \renewcommand{\thetable}{\ifnum \c@chapter>\z@ \thechapter-\fi \@arabic\c@table}
+    \renewcommand{\theequation}{\arabic{chapter}-\arabic{equation}}
+
+%% 去掉表格/图片标题后面的冒号
+\captionsetup[table]{labelsep=quad} 
+\captionsetup[figure]{labelsep=quad} 
 
 %% 摘要格式
 \newenvironment{abstract}
@@ -711,6 +715,8 @@
 %\renewcommand\tableofcontents{
 %    \oldtableofcontents
 %}
+
+\setcounter{tocdepth}{1} % 标题深度至一级标题
 \renewcommand\tableofcontents{%
     \if@twocolumn
       \@restonecoltrue\onecolumn
@@ -800,7 +806,7 @@
   \ifnum \c@tocdepth >\m@ne
     \addpenalty{-\@highpenalty}%
     \vskip 1.0em \@plus\p@
-    \setlength\@tempdima{1.5em}%
+    \setlength\@tempdima{1.5em}%、
     \begingroup
       \parindent \z@ \rightskip \@pnumwidth
       \parfillskip -\@pnumwidth

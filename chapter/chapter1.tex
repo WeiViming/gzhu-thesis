@@ -1,8 +1,11 @@
 % !TEX root = ../main.tex
-\chapter{绪论} 
+% \chapter{绪论}
+\bichapter{绪论}{Introduction} 
 \label{chapter:Introduction}
 
-\section{模板概述}
+%\section{模板概述} % 不需要英文目录时使用该样式
+\bisection{模板概述}{Overview} % 启动双语目录必须使用此命令，其余类似
+
 本模板基本结构如下:
 
 \begin{itemize}
@@ -22,14 +25,15 @@
 \end{itemize}
 \end{itemize}
 
-\section{编译方式}
+\bisection{编译方式}{Compilation}
 本模板支持Windows/Linux/MacOS全平台编译, 亦支持Overleaf等在线编译平台, 编译方式如下:
 \begin{enumerate}
-\item 若本地环境请先安装texlive最新发行版, 如texlive 2023; 若在线环境请选择xelatex编译引擎;
+\item 若本地环境请先安装texlive最新发行版, 至少为texlive 2022以上; 
 \item 使用xelatex编译一次, 然后使用bibtex编译一次, 最后再次使用xelatex编译两次即可.
 \end{enumerate}
+推荐使用的TeX编辑器：\href{https://mirrors.tuna.tsinghua.edu.cn/github-release/texstudio-org/texstudio/}{TexStudio}, VSCode, WinEdt 11.2.
 
-\section{双语目录与标题}
+\bisection{双语目录与标题}{Bilingual Table of Contents and Titles}
 有些方向要求论文有英文目录或者图表的标题是双语的, 本模板支持双语标题. 调用命令如下:
 \begin{verbatim}
 \bichapter{中文章节名}{English Chapter Name}
@@ -44,7 +48,7 @@
 
 为了生成双语目录, 需要在main.tex中取消\verb|\tableofengcontents|的注释.
 
-\section{算法伪代码}
+\bisection{算法伪代码}{Algorithmic Pseudocode}
 本模板已引入算法相关宏包. 使用方法见下例 \ref{alg:test}.
 \begin{verbatim}
     \begin{algorithm}%[htbp]
@@ -88,8 +92,8 @@
 \end{algorithm}
 
 
-\section{插图与引用}
-如图 \ref{fig:logo}.
+\bisection{插图与公式}{Figures \& Equations}
+如图 \ref{fig:logo}. 
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.25]{logo}
@@ -103,7 +107,18 @@
 \listoffigures              % 插图目录
 \end{verbatim}
 
-\section{引用参考文献}
+公式部分, \verb|\eqref{}|生成的公式编号带括号, 而\verb|\ref{}|生成的不带括号. 如公式 \ref{eq:eular} 或者 \eqref{eq:eular}.
+\begin{equation}\label{eq:eular}
+  \mathrm{e}^{i\pi}+1=0.
+\end{equation}
+
+\bisubsection{目录深度测试}{TOC Depth Test}
+默认情况下目录仅显示一级标题. 可通过修改\verb|style/GZHUthesis.cls|中的如下命令中的数值来更改目录深度:
+\begin{verbatim}
+\setcounter{tocdepth}{1} 
+\end{verbatim}
+
+\bisection{引用参考文献}{Bibliographic Citations}
 本模板使用bib文件作为参考文献文件, 同时引入了natbib宏包, 此外增添了两个自定义命令:
 \begin{itemize}
 \item \verb|\citeyearn{citekey}|  ~  引用年份时可在年份后面自动添加``年''
@@ -112,7 +127,7 @@
 
 这是一句测试\cite{Hazay_2010_Efficient}. 引用年份时: \citeyearn{Hazay_2010_Efficient}. 上标引用\upcite{Hazay_2010_Efficient}.
 
-\section{常见问题}
+\bisection{常见问题}{Q \& A}
 Q1: 如何添加更多章节文件?\\
 A1: 按如下步骤操作:
 \begin{enumerate}
@@ -143,4 +158,13 @@ A5: 首先确保main.tex文件中的第28行后面这个\verb|\includeonly|命�
 \end{enumerate}
 
 Q6: 能否生成不同版本号用来区分不同的版本?\\
-A6: 打开cover.cfg, 在\verb|\version{}|中填写需要的版本号, 如此, 将在首页生成一个版本号信息. 本模板提供了自定义了一个日期时间作为版本号, 调用方式为输入\verb|\version{\today}|, 结果如同(版本: \today). 当然, 版本号可以修改为任意其他文字, 例如定稿时, 修改为``终稿''.
+A6: 打开cover.cfg, 在\verb|\version{}|中填写需要的版本号, 如此, 将在首页生成一个版本号信息. 本模板提供了自定义了一个日期时间作为版本号, 调用方式为输入\verb|\version{\today}|, 结果如同(版本: \today). 当然, 版本号可以修改为任意其他文字, 例如定稿时, 修改为“终稿”.\\
+
+Q7: 学院要求页眉只有一条细线, 不要粗线?\\
+A7: 打开style/GZHUthesis.cls，搜索“粗细页眉”，注释掉相关命令。\\
+
+Q8: 我想用\LaTeX{}默认英文字体?\\
+A8: 打开style/GZHUthesis.cls，注释掉以下命令
+\begin{verbatim}
+\RequirePackage[nomath]{stix} % Times风格英文字体
+\end{verbatim}

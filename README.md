@@ -12,4 +12,4 @@
 本模板支持Windows/MacOS/Linux全平台编译, 也支持Overleaf这样的在线编译平台, 在编译前做如下准备:
 - 本地安装texlive最新发行版, 使用XeLaTeX引擎编译主文件`main.tex`, 具体为: xelatex -> bibtex -> xelatex -> xelatex
 - Overleaf等在线编译则直接使用XeLaTeX引擎编译主文件`main.tex`即可
-
+- TeX编辑器推荐使用VSCode(全平台支持)，texstudio(全平台支持, [点此下载](https://mirrors.tuna.tsinghua.edu.cn/github-release/texstudio-org/texstudio/))，WinEdt 11.2(仅限Windows)

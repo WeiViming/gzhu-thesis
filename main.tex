@@ -9,7 +9,7 @@
 \documentclass[openany, notypeinfo]{style/GZHUthesis}
 
 % 可选参数：
-% openany    新一章从奇数页或偶数页开始都可以
+% openany    新一章从奇数页或偶数页开始都可以, 去掉则必须从奇数页开始, 偶数页加空白页
 % notypeinfo 取消扉页的LaTeX版本信息
 %
 % 下面三个选一个：
@@ -72,9 +72,9 @@
 \frontmatter  % 前言部分
  \pagenumbering{Roman} % 页码大写罗马字体
   \include{chapter/abstract}  % 摘要
-  \begin{spacing}{1.0}
+  \begin{spacing}{1.3}
   \tableofcontents             % 目录
-%  \tableofengcontents		   % 英文目录, 只有使用双语章节时才使用, 例如\bichapter{中文章名}{English Chapter}, 此外还有\bisection, \bisubsection, \bicaption
+  \tableofengcontents		      % 英文目录, 只有使用双语章节时才使用, 例如\bichapter{中文章名}{English Chapter}, 此外还有\bisection, \bisubsection, \bicaption
 %  \listoftables               % 表格目录
 %  \listoffigures              % 插图目录
   \end{spacing}
@@ -107,4 +107,4 @@
 \fi
 
 \end{sloppypar} % 处理行溢出
-\end{document}
+\end{document} 

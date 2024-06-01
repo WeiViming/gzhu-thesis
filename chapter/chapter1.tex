@@ -163,8 +163,18 @@ A6: 打开cover.cfg, 在\verb|\version{}|中填写需要的版本号, 如此, �
 Q7: 学院要求页眉只有一条细线, 不要粗线?\\
 A7: 打开style/GZHUthesis.cls，搜索“粗细页眉”，注释掉相关命令。\\
 
-Q8: 我想用\LaTeX{}默认英文字体?\\
-A8: 打开style/GZHUthesis.cls，注释掉以下命令
+Q8: 学院要求从奇数页开始新的一章并带页眉, 偶数页加空白页?\\
+A8: 按如下步骤操作:
+\begin{itemize}
+  \item 去掉main.tex中documentclass的openany选项;
+  \item 在style/GZHUthesis.cls中搜索并打开如下命令:
+  \begin{verbatim}
+  \fancypagestyle{plain}{}   %% 如果章节首页需要页眉
+  \end{verbatim}
+\end{itemize}
+
+Q9: 学院要求英文字体为Times New Roman?\\
+A9: 打开style/GZHUthesis.cls，搜索并打开以下命令
 \begin{verbatim}
 \RequirePackage[nomath]{stix} % Times风格英文字体
-\end{verbatim}
+\end{verbatim} 

@@ -107,8 +107,6 @@
 
 %% 页面
 \RequirePackage{geometry}
-%% 页面大小
-\geometry{top=2.5cm,bottom=2.5cm}
 
 %% 间距
 \RequirePackage{setspace}
@@ -122,7 +120,7 @@
 \RequirePackage{pifont}
 
 %% 字体设置
-\RequirePackage[nomath]{stix} % Times风格英文字体
+%\RequirePackage[nomath]{stix} % Times风格英文字体
 \setsansfont{Arial}
 
 %% 插入代码
@@ -684,7 +682,7 @@
   \fancyhead[EC]{\small {\GZHU@value@school\GZHU@value@subject\GZHU@value@degree}学位论文}
   \fancyhead[OC]{\small \nouppercase\leftmark}
   \cfoot{\thepage}
-  %\fancypagestyle{plain}{}   %% 如果首页需要页眉
+  %\fancypagestyle{plain}{}   %% 如果章节首页需要页眉
 
 %% 公式图片表格编号
 \makeatletter
@@ -917,6 +915,8 @@
   {.}%        Punctuation after thm head
   {\newline}% Space after thm head: \newline = linebreak
   {}%         Thm head spec
+  
+
 \endinput
 %%
 %% End of file `GZHUthesis.cls'.

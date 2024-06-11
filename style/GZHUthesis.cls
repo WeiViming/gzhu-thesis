@@ -356,7 +356,7 @@
 %%
 %% the section title format
 %%
-\def\CTEX@section@format{\bfseries\heiti\zihao{3}\centering}
+\def\CTEX@section@format{\bfseries\heiti\zihao{3}}
  \def\CTEX@section@beforeskip{1.0ex \@plus 0.2ex \@minus .2ex}
  \def\CTEX@section@afterskip{1.0ex \@plus 0.2ex \@minus .2ex}
 %%
@@ -416,6 +416,9 @@
 \let\oldciteyear\citeyear
 \newcommand{\citeyearn}[1]{\oldciteyear{#1}年}
 \newcommand{\citeauthorn}[1]{\citeauthorn{#1}\cite{#1}}
+
+% 上标引用
+\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}}
 \makeatother
 }
 

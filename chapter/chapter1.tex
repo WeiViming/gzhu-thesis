@@ -128,8 +128,8 @@
 这是一句测试\cite{Hazay_2010_Efficient}. 引用年份时: \citeyearn{Hazay_2010_Efficient}. 上标引用\upcite{Hazay_2010_Efficient}.
 
 \bisection{常见问题}{Q \& A}
-Q1: 如何添加更多章节文件?\\
-A1: 按如下步骤操作:
+\begin{QandA}{如何添加更多章节文件?}
+按如下步骤操作:
 \begin{enumerate}
 \item 在chapter文件夹下添加新的tex文件, 例如chapter3.tex
 \item 打开main.tex, 仿照第28行的说明在对应位置添加\verb|chapter/chapter3,| ~ (注意后面有个英文的逗号)
@@ -140,31 +140,38 @@ A1: 按如下步骤操作:
 从第2行开始输入正文.
 \item 编译查看结果.
 \end{enumerate}
+\end{QandA}
 
-Q2: 如何修改论文作者信息?\\
-A2: 直接修改cover.cfg文件中的信息.\\
+\begin{QandA}{如何修改论文作者信息?}
+直接修改cover.cfg文件中的信息.
+\end{QandA}
 
-Q3: 如何加入自定义命令和宏包?\\
-A3: 请在defcommands.tex中添加自定义命令和宏包.\\
+\begin{QandA}{如何加入自定义命令和宏包?}
+请在defcommands.tex中添加自定义命令和宏包.
+\end{QandA}
 
-Q4: 可否修改为硕士学位论文?\\
-A4: 本模板默认为博士学位论文. 若要修改为硕士论文, 请在main.tex文件中将语句\verb|\phdtrue|注释掉, 同时取消\verb|\phdfalse|的注释. \\
+\begin{QandA}{可否修改为硕士学位论文?}
+本模板默认为博士学位论文. 若要修改为硕士论文, 请在main.tex文件中将语句\verb|\phdtrue|注释掉, 同时取消\verb|\phdfalse|的注释. 
+\end{QandA}
 
-Q5: 如何生成盲审论文?\\
-A5: 首先确保main.tex文件中的第28行后面这个\verb|\includeonly|命令中正确包含了需要盲审的章节, 然后按如下步骤操作:
+\begin{QandA}{如何生成盲审论文?}
+首先确保main.tex文件中的第28行后面这个\verb|\includeonly|命令中正确包含了需要盲审的章节, 然后按如下步骤操作:
 \begin{enumerate}
 \item 在main.tex文件中注释掉\verb|\blindfalse|, 打开\verb|\blindtrue|
 \item 使用xelatex编译3次生成盲审结果
 \end{enumerate}
+\end{QandA}
 
-Q6: 能否生成不同版本号用来区分不同的版本?\\
-A6: 打开cover.cfg, 在\verb|\version{}|中填写需要的版本号, 如此, 将在首页生成一个版本号信息. 本模板提供了自定义了一个日期时间作为版本号, 调用方式为输入\verb|\version{\today}|, 结果如同(版本: \today). 当然, 版本号可以修改为任意其他文字, 例如定稿时, 修改为“终稿”.\\
+\begin{QandA}{能否生成不同版本号用来区分不同的版本?}
+打开cover.cfg, 在\verb|\version{}|中填写需要的版本号, 如此, 将在首页生成一个版本号信息. 本模板提供了自定义了一个日期时间作为版本号, 调用方式为输入\verb|\version{\today}|, 结果如同(版本: \today). 当然, 版本号可以修改为任意其他文字, 例如定稿时, 修改为“终稿”.
+\end{QandA}
 
-Q7: 学院要求页眉只有一条细线, 不要粗线?\\
-A7: 打开style/GZHUthesis.cls，搜索“粗细页眉”，注释掉相关命令。\\
+\begin{QandA}{学院要求页眉只有一条细线, 不要粗线?}
+打开style/GZHUthesis.cls，搜索“粗细页眉”，注释掉相关命令。
+\end{QandA}
 
-Q8: 学院要求从奇数页开始新的一章并带页眉, 偶数页加空白页?\\
-A8: 按如下步骤操作:
+\begin{QandA}{学院要求从奇数页开始新的一章并带页眉, 偶数页加空白页?}
+按如下步骤操作:
 \begin{itemize}
   \item 去掉main.tex中documentclass的openany选项;
   \item 在style/GZHUthesis.cls中搜索并打开如下命令:
@@ -172,9 +179,11 @@ A8: 按如下步骤操作:
   \fancypagestyle{plain}{}   %% 如果章节首页需要页眉
   \end{verbatim}
 \end{itemize}
+\end{QandA}
 
-Q9: 学院要求英文字体为Times New Roman?\\
-A9: 打开style/GZHUthesis.cls，搜索并打开以下命令
+\begin{QandA}{学院要求英文字体为Times New Roman?}
+打开style/GZHUthesis.cls，搜索并打开以下命令
 \begin{verbatim}
 \RequirePackage[nomath]{stix} % Times风格英文字体
 \end{verbatim} 
+\end{QandA}

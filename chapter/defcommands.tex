@@ -22,9 +22,10 @@
 % \abovedisplayshortskip=0pt
 % \belowdisplayshortskip=0pt
 
-\ctexset{section={format+={\flushleft}}}  % 小节标题靠左对齐
+%\ctexset{section={format+={\flushleft}}}  % 小节标题靠左对齐
 
 %% 页面大小, 不要设置左右边距, 否则将出现页眉和正文无法对齐
+%% 尽管研究生院要求上下左右边距均为2.5cm, 但没有考虑预留奇偶页边距用于装订成册 
 \geometry{top=3.5cm,bottom=3.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -53,33 +54,17 @@
 \renewcommand{\algorithmicrequire}{\textbf{输入:}}
 \renewcommand{\algorithmicensure}{\textbf{输出:}}
 
-\newcommand{\upcite}[1]{\textsuperscript{\cite{#1}}} % 上标引用
-
 % Protocol/Functionality
 \tcbuselibrary{skins,breakable}
-\newtcolorbox[auto counter,number within=chapter]{protocol}[2][]{%
+\newtcolorbox[auto counter]{QandA}[2][]{%
   enhanced,
-%  title        = {Protocol \thetcbcounter: {#2}},
-  title        = {Protocol {#2}},
+  title        = {问题\thetcbcounter. {#2}},
   attach boxed title to top left={xshift=+3mm,yshift*=-3mm},
   colback      = black!5,
   colframe     = black!35,
   fonttitle    = \bfseries,
   colbacktitle = black!15!white,
   arc          = 0mm,
-  coltitle     = black,
-  #1
-}
-
-\newtcolorbox[auto counter,number within=chapter]{functionality}[2][]{%
-  enhanced,
-%  title        = {Functionality \thetcbcounter: {#2}},
-  title        = {Functionality {#2}},
-  attach boxed title to top left={xshift=+3mm,yshift*=-3mm},
-  colback      = yellow!5,
-  colframe     = yellow!35!black,
-  fonttitle    = \bfseries,
-  colbacktitle = yellow!15!white,
   coltitle     = black,
   #1
 }

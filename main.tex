@@ -6,16 +6,11 @@
 
 \PassOptionsToPackage{quiet}{fontspec} % 消除字体警告
 \expandafter\def\csname CTEX@spaceChar\endcsname{\hspace{1em}}
-\documentclass[openany, notypeinfo]{style/GZHUthesis}
+\documentclass[notypeinfo]{style/GZHUthesis}
 
 % 可选参数：
 % openany    新一章从奇数页或偶数页开始都可以, 去掉则必须从奇数页开始, 偶数页加空白页
 % notypeinfo 取消扉页的LaTeX版本信息
-%
-% 下面三个选一个：
-% 使用 dvipdfm  生成最终的 PDF 文档 (缺省设置）
-% 使用 dvips    生成最终的 PS 文档
-% 使用 pdfLaTeX 生成最终的 PDF 文档
 
 %盲审模式,正常模式请注释掉
 %\blindtrue

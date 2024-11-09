@@ -59,7 +59,7 @@
 \DeclareOption{pdftex}{\GZHU@dvipsfalse}
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
 \ProcessOptions
-\LoadClass[zihao=-4,a4paper]{ctexbook}[2005/11/25]
+\LoadClass[zihao=-4]{ctexbook}[2005/11/25]
 %% check TeX mode
 \RequirePackage{ifpdf,ifxetex}
 %% page
@@ -106,7 +106,8 @@
 \RequirePackage{url}
 
 %% 页面
-\RequirePackage{geometry}
+\RequirePackage[a4paper]{geometry}
+\geometry{margin=2.5cm}
 
 %% 间距
 \RequirePackage{setspace}
@@ -183,28 +184,6 @@
 \RequirePackage[list=off]{bicaption}
 \captionsetup[figure][bi-second]{name=Figure,list=no}
 \captionsetup[table][bi-second]{name=Table,list=no}
-
-
-% packages and settings depend on PDF mode
-\ifxetex
-  \RequirePackage[xetex]{hyperref}
-  \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\else
-  \ifpdf   % We're running pdfTeX in PDF mode
-    \RequirePackage[pdftex]{hyperref}
-    \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-  \else    % We're not running pdfTeX, or running pdfTeX in DVI mode
-    \ifGZHU@dvips
-      \RequirePackage[dvips]{hyperref}
-      \RequirePackage{psfrag}
-      \AtBeginDvi{\special{pdf:tounicode GBK-EUC-UCS2}} % GBK -> Unicode
-    \else
-      %% \RequirePackage[dvipdfm]{hyperref}
-      \RequirePackage{hyperref} %% modify by Viming
-    \fi
-    \DeclareGraphicsExtensions{.eps,.ps}
-  \fi
-\fi
 
 %% 链接设置
 \RequirePackage{hyperref}
@@ -428,9 +407,9 @@
 \else
   \evensidemargin 1 true cm
 \fi
-\textheight 21 true cm
+\textheight 24 true cm
 \textwidth 14.5 true cm
-\headheight 16pt
+\headheight 20pt
 \parskip 0.5ex plus 0.25ex minus 0.25ex
 \def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
   \thispagestyle{empty}%
